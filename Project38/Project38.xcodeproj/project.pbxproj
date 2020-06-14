@@ -14,6 +14,8 @@
 		AA61AC062495FD5A00F7B4AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61AC052495FD5A00F7B4AC /* Assets.xcassets */; };
 		AA61AC092495FD5B00F7B4AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61AC072495FD5B00F7B4AC /* LaunchScreen.storyboard */; };
 		AA61AC112496030F00F7B4AC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61AC102496030F00F7B4AC /* DetailViewController.swift */; };
+		AAB2A8192496E5CF00FB29ED /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2A8182496E5CF00FB29ED /* SwiftyJSON.swift */; };
+		AAB2A81C2496E60C00FB29ED /* Project38.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAB2A81A2496E60C00FB29ED /* Project38.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		AA61AC082495FD5B00F7B4AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA61AC0A2495FD5B00F7B4AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA61AC102496030F00F7B4AC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AAB2A8182496E5CF00FB29ED /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		AAB2A81B2496E60C00FB29ED /* Project38.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Project38.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +65,10 @@
 				AA61ABFC2495FD4A00F7B4AC /* AppDelegate.swift */,
 				AA61ABFE2495FD4A00F7B4AC /* SceneDelegate.swift */,
 				AA61AC002495FD4A00F7B4AC /* ViewController.swift */,
-				AA61AC022495FD4A00F7B4AC /* Main.storyboard */,
 				AA61AC102496030F00F7B4AC /* DetailViewController.swift */,
+				AA61AC022495FD4A00F7B4AC /* Main.storyboard */,
+				AAB2A8182496E5CF00FB29ED /* SwiftyJSON.swift */,
+				AAB2A81A2496E60C00FB29ED /* Project38.xcdatamodeld */,
 				AA61AC052495FD5A00F7B4AC /* Assets.xcassets */,
 				AA61AC072495FD5B00F7B4AC /* LaunchScreen.storyboard */,
 				AA61AC0A2495FD5B00F7B4AC /* Info.plist */,
@@ -144,6 +150,8 @@
 				AA61AC012495FD4A00F7B4AC /* ViewController.swift in Sources */,
 				AA61ABFD2495FD4A00F7B4AC /* AppDelegate.swift in Sources */,
 				AA61ABFF2495FD4A00F7B4AC /* SceneDelegate.swift in Sources */,
+				AAB2A8192496E5CF00FB29ED /* SwiftyJSON.swift in Sources */,
+				AAB2A81C2496E60C00FB29ED /* Project38.xcdatamodeld in Sources */,
 				AA61AC112496030F00F7B4AC /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +350,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AAB2A81A2496E60C00FB29ED /* Project38.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AAB2A81B2496E60C00FB29ED /* Project38.xcdatamodel */,
+			);
+			currentVersion = AAB2A81B2496E60C00FB29ED /* Project38.xcdatamodel */;
+			path = Project38.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AA61ABF12495FD4A00F7B4AC /* Project object */;
 }
