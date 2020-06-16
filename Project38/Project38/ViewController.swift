@@ -33,6 +33,7 @@ class ViewController: UITableViewController {
             }
         }
         
+        performSelector(inBackground: #selector(fetchCommits), with: nil)
     }
     
     func saveContext(){
@@ -47,6 +48,30 @@ class ViewController: UITableViewController {
         }
     }
 
+    @objc func fetchCommits(){
+        if let data = try? String(contentsOf: URL(string: "https://api.github.com/repos/apple/swift/commits?per_page=100")!) {
+            //give data to swiftyJSON to parse
+            let jsonCommits = JSON(parseJSON: data)
+            
+            //read the commits back out
+            let jsonCommitArray = jsonCommits.arrayValue
+            
+            print("Recieved\(jsonCommitArray.count) new commits")
+            
+            DispatchQueue.main.async { [unowned self] in
+                for jsonCommit in jsonCommitArray{
+                    let commit = Commit(context: self.container.viewContext)
+                    self.configure(commit: commit, usingJSON: jsonCommit)
+                }
+                
+                self.saveContext()
+            }
+        }
+    }
+    
+    func configure(commit: Commit, usingJSON json: JSON){
+        
+    }
 
 }
 
