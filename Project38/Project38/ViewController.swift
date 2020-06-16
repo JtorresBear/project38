@@ -70,6 +70,14 @@ class ViewController: UITableViewController {
     }
     
     func configure(commit: Commit, usingJSON json: JSON){
+        commit.sha = json["sha"].stringValue
+        commit.message = json["commit"]["message"].stringValue
+        commit.url = json["html_url"].stringValue
+        
+        //converts a ISO8601 date to a regular date and back from string. if it fails
+        //we get todays date.
+        let formatter = ISO8601DateFormatter()
+        commit.date = formatter.date(from: json["commit"]["commiter"]["date"].stringValue) ?? Date()
         
     }
 
