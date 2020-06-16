@@ -30,6 +30,12 @@ class ViewController: UITableViewController {
         container = NSPersistentContainer(name: "Project38")
         //loads saved data, or creates it if it doesn't exist
         container.loadPersistentStores { (storeDescription, error) in
+            
+            // this instructs core data to allow updates to objects if an object exists in the data store with message A
+            //and an object with the same attribute("sha", which is a constraint in the data model) with message B
+            //the in memory bersion overwrites the data store version
+            self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            
             if let error = error {
                 print("unresolved error \(error)")
             }
