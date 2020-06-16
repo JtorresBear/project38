@@ -22,9 +22,15 @@ class ViewController: UITableViewController {
     var container: NSPersistentContainer!
     //objects that are to be saved to and loaded from
     var commits = [Commit]()
+    
+    //a  predicate is a filter. you specify the criteria you want to match.
+    // core data will ensure only matching objects get returned.
+    var commitPredicate: NSPredicate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(changeFilter))
         
         //must be given the name of the COREDATAMODEL(.xcdatamodeld)
         container = NSPersistentContainer(name: "Project38")
@@ -118,6 +124,7 @@ class ViewController: UITableViewController {
         let sort = NSSortDescriptor(key: "date", ascending: false)
         //uses the sort we initialized
         request.sortDescriptors = [sort]
+        request.predicate = commitPredicate
         
         do{
             //loads the commits into the commits array using the request we specified
@@ -127,6 +134,20 @@ class ViewController: UITableViewController {
         } catch {
             print("Fetch Failed")
         }
+    }
+    
+    @objc func changeFilter(){
+        let ac = UIAlertController(title: "Filter Commits", message: nil, preferredStyle: .actionSheet)
+        //1
+        ac.addAction(UIAlertAction(title: "Show only fixes", style: .default, handler: { [unowned self](_) in
+            self.commitPredicate = NSPredicate(format: "message CONTAINS[c] 'fix'")
+            self.loadSavedData()
+        }))
+        //2
+        //3
+        //4
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(ac, animated: true)
     }
 
 }
