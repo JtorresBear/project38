@@ -124,6 +124,9 @@ class ViewController: UITableViewController {
         let sort = NSSortDescriptor(key: "date", ascending: false)
         //uses the sort we initialized
         request.sortDescriptors = [sort]
+        
+        // in the change filter function. we change the class varibable commit predicate
+        //so we use that as the request predicate to change the tableview values.
         request.predicate = commitPredicate
         
         do{
@@ -138,14 +141,27 @@ class ViewController: UITableViewController {
     
     @objc func changeFilter(){
         let ac = UIAlertController(title: "Filter Commits", message: nil, preferredStyle: .actionSheet)
-        //1
+        //1 the CONTAINS[c] part is an operator just like == except more useful for this app. CONTAINS means it will for sure see "fix" and the [c] means its case-insensitive so fix, Fix, FIX will be found or any combo
         ac.addAction(UIAlertAction(title: "Show only fixes", style: .default, handler: { [unowned self](_) in
             self.commitPredicate = NSPredicate(format: "message CONTAINS[c] 'fix'")
             self.loadSavedData()
         }))
-        //2
-        //3
-        //4
+        //2 BEGINSWITH works like contains but the matching text must be at the start of a string. the NOT keyword means don't find the message that begins with.
+        ac.addAction(UIAlertAction(title: "Ignore Pull Requests", style: .default, handler: { [unowned self](_) in
+            self.commitPredicate = NSPredicate(format: "NOT message BEGINSWITH 'Merge pull request'")
+            self.loadSavedData()
+        }))
+        //3 in this predicate we're using date to find commits only 43,200 seconds ago.
+        ac.addAction(UIAlertAction(title: "Show only Recent", style: .default, handler: { [unowned self](_) in
+            let twelveHoursAgo = Date().addingTimeInterval(-43200)
+            self.commitPredicate = NSPredicate(format: "date > %@", twelveHoursAgo as NSDate)
+            self.loadSavedData()
+        }))
+        //4 puts commitPredicate back to nil so all request show again.
+        ac.addAction(UIAlertAction(title: "Show all Commits", style: .default, handler: { [unowned self] _ in
+            self.commitPredicate = nil
+            self.loadSavedData()
+        }))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(ac, animated: true)
     }
