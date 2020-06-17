@@ -119,7 +119,7 @@ class ViewController: UITableViewController {
     func loadSavedData(){
         //creates an NSRequest
         let request = Commit.createFetchRequest()
-        //creates a sort of the date data in Commit object
+        //creates a sort order of the date data in Commit object
         //date is the key or Commit.date and it sorts it in descending order
         let sort = NSSortDescriptor(key: "date", ascending: false)
         //uses the sort we initialized
@@ -132,7 +132,7 @@ class ViewController: UITableViewController {
         do{
             //loads the commits into the commits array using the request we specified
             commits = try container.viewContext.fetch(request)
-            print("Got\(commits.count) commits")
+            print("Got \(commits.count) commits")
             tableView.reloadData()
         } catch {
             print("Fetch Failed")
