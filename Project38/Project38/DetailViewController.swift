@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         if let detail = self.detailItem {
-            detailLabel.text = detail.message
+            detailLabel.text = "next"
             //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Commit" 1/\(detail.author.commits.count)", style: .plain, target: self, action: #selector(showAuthorCommits))
         }
     }
